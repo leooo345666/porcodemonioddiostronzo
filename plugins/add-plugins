@@ -1,0 +1,40 @@
+import fs from 'fs'
+
+let handler = async (message, { text, usedPrefix, command }) => {
+  if (!text) throw '✍️ Inserisci il *nome del plugin* da creare (es: testplugin)';
+  if (!message.quoted || !message.quoted.text) throw '📥 Rispondi al *messaggio* che contiene il codice del plugin da aggiungere';
+
+  let pluginPath = `plugins/${text}.js`;
+
+  // Se il file esiste già, blocca la sovrascrittura
+  if (fs.existsSync(pluginPath)) throw `⚠️ Il plugin "${text}.js" esiste già. Usa /editplugin per modificarlo.`;
+
+  // Scrive il nuovo plugin
+  fs.writeFileSync(pluginPath, message.quoted.text);
+
+  // Messaggio di conferma con location fittizia (stile Telegram)
+  let responseMessage = {
+    key: {
+      participants: '0@s.whatsapp.net',
+      fromMe: false,
+      id: 'AddPlugin'
+    },
+    message: {
+      locationMessage: {
+        name: '✅ Plugin Aggiunto',
+        jpegThumbnail: await (await fetch('https://telegra.ph/file/876cc3f192ec040e33aba.png')).buffer(),
+        vcard: 'BEGIN:VCARD\nVERSION:3.0\nN:;Plugin;;;\nFN:Plugin\nEND:VCARD'
+      }
+    },
+    participant: '0@s.whatsapp.net'
+  };
+
+  conn.reply(message.chat, `🧩 Il plugin *"${text}"* è stato aggiunto con successo!`, responseMessage);
+};
+
+handler.help = ['addplugin <nome>']
+handler.tags = ['owner']
+handler.command = /^addplugin$/i
+handler.rowner = true
+
+export default handler
