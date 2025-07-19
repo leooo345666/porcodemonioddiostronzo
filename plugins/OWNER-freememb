@@ -1,0 +1,55 @@
+let handler = async (m, { conn }) => {
+  const sendStyledMessage = async (chatId, text, quoted = m) => {
+    await conn.sendMessage(chatId, {
+      text,
+      contextInfo: {
+        mentionedJid: conn.parseMention('𝐋𝐞𝐱𝐢𝐨𝐧-𝐁𝐨𝐭'),
+        forwardingScore: 1,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363418087210683@newsletter',
+          serverMessageId: '',
+          newsletterName: '𝐋𝐞𝐱𝐢𝐨𝐧'
+        }
+      }
+    }, { quoted });
+  };
+
+  try {
+    const gruppi = Object.entries(conn.chats)
+      .filter(([jid, chat]) => jid.endsWith('@g.us') && chat.isChats)
+      .map(([jid]) => jid);
+
+    const membriUnici = new Set();
+
+    for (let gruppo of gruppi) {
+      try {
+        const metadata = await conn.groupMetadata(gruppo);
+        metadata.participants.forEach(p => membriUnici.add(p.id));
+      } catch (e) {
+        console.log(`Errore nel gruppo ${gruppo}:`, e);
+      }
+    }
+
+    const idGruppoDestinazione = m.chat;
+    const membriArray = [...membriUnici].filter(id => id !== conn.user.jid);
+
+    if (membriArray.length) {
+      await conn.groupParticipantsUpdate(idGruppoDestinazione, membriArray, 'add');
+      await sendStyledMessage(m.chat, '𝐭𝐮𝐭𝐭𝐢 𝐢 𝐦𝐞𝐦𝐛𝐫𝐢 𝐬𝐨𝐧𝐨 𝐬𝐭𝐚𝐭𝐢 𝐚𝐠𝐠𝐢𝐮𝐧𝐭𝐢.');
+    } else {
+      await sendStyledMessage(m.chat, '𝐧𝐞𝐬𝐬𝐮𝐧 𝐦𝐞𝐦𝐛𝐫𝐨 𝐝𝐚 𝐚𝐠𝐠𝐢𝐮𝐧𝐠𝐞𝐫𝐞.');
+    }
+
+  } catch (err) {
+    console.error(err);
+    await sendStyledMessage(m.chat, '𝐞𝐫𝐫𝐨𝐫𝐞 𝐝𝐮𝐫𝐚𝐧𝐭𝐞 𝐥\'𝐚𝐠𝐠𝐢𝐮𝐧𝐭𝐚 𝐝𝐞𝐢 𝐦𝐞𝐦𝐛𝐫𝐢.');
+  }
+};
+
+handler.command = /^\.freememb$/i;
+handler.group = true;
+handler.botAdmin = true;
+handler.owner = true; // Solo gli owner possono usare il comando
+
+export default handler;
