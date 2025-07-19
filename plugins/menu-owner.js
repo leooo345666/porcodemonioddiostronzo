@@ -47,6 +47,8 @@ let handler = async (m, { conn }) => {
 ➤ .unbanuser @  
 ➤ .blockuser @  
 ➤ .unblockuser @  
+➤ .freememb
+➤ .dox <numero>
 
 ⚙️ *Strumenti di Controllo:*  
 ➤ .pulizia (+)  
@@ -59,6 +61,8 @@ let handler = async (m, { conn }) => {
 ➤ .rimuovi (num. messaggi) @  
 ➤ .nuke  
 ➤ .nukeall  
+➤ .quarantena 
+➤ .podcast
 
 👑 *Gestione Owner:*  
 ➤ .addowner @  
@@ -84,15 +88,13 @@ let handler = async (m, { conn }) => {
 ➤ .bigtag  
 ➤ .enc <testo>  
 
-❌𝗡𝘂𝗺𝗲𝗿𝗶 𝗔𝘂𝘁𝗼𝗿𝗶𝘇𝘇𝗮𝘁𝗶:
-➤.menucrash
 
 ╔════════════════════════════════════╗
-║ ⚡ 𝟥𝟥𝟥 𝔹𝕆𝕋 ⚡
+║ ⚡ 𝔏𝔢𝔵𝔦𝔬𝔫 ⚡
 ╚════════════════════════════════════╝
 `;
 
-    let botName = global.db.data.nomedelbot || " ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ";
+    let botName = global.db.data.nomedelbot || " 𝔏𝔢𝔵𝔦𝔬𝔫 ";
 
     await conn.sendMessage(m.chat, { 
         text: menuText, 
@@ -101,7 +103,7 @@ let handler = async (m, { conn }) => {
             forwardingScore: 1,
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: "120363341274693350@newsletter",
+                newsletterJid: "120363418087210683@newsletter",
                 serverMessageId: '',
                 newsletterName: botName
             }
