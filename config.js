@@ -7,7 +7,7 @@ global.botnumber = "" //Inserisci nelle apici il numero del bot (es. +3937620304
 global.confirmCode = ""
 
 global.owner = [
-    ['393509368693', 'Proprietario', true ],
+    ['393515112665', 'Proprietario', true ],
 ] //Numero degli owner
 
 //────────────────────────────
@@ -54,20 +54,20 @@ global.imagen4 = fs.readFileSync('./333.png')
 //────────────────────────────
 
 // Sticker WM (Nome del pacchetto degli sticker)
-global.packname = ' ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ '
+global.packname = '𖣂'
 global.author = '𝐌𝐝'
 
 //────────────────────────────
 
 global.vs = 'Finale'
 
-global.nomebot = ' ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ '
+global.nomebot = ' 𝔏𝔢𝔵𝔦𝔬𝔫 '
 
 global.multiplier = 69 
 global.maxwarn = '4' 
 //────────────────────────────
 
-global.wm = ' ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ '
+global.wm = ' 𖣂 '
 global.wait = 'ⓘ 𝐂𝐚𝐫𝐢𝐜𝐚𝐦𝐞𝐧𝐭𝐨 ...'
 
 //────────────────────────────
