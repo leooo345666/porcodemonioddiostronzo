@@ -1,32 +1,36 @@
-//Plugin fatto da Gabs & 333 Staff
-import 'os';
-import 'util';
-import 'human-readable';
-import '@whiskeysockets/baileys';
-import 'fs';
-import 'perf_hooks';
+import fs from 'fs';
 
-let handler = async (_0x4955de, { conn: _0x4b9a49, usedPrefix: _0xeb2cc9 }) => {
-  let _0x414c2d = {
-    'key': {
-      'participants': "0@s.whatsapp.net",
-      'fromMe': false,
-      'id': 'Halo'
+let handler = async (message, { conn, usedPrefix }) => {
+  let quotedMsg = {
+    key: {
+      participants: "0@s.whatsapp.net",
+      fromMe: false,
+      id: 'Halo'
     },
-    'message': {
-      'locationMessage': {
-        'name': "𝐌𝐞𝐧𝐮 𝐀𝐝𝐦𝐢𝐧",
-        'jpegThumbnail': fs.readFileSync('./icone/admin.png'), // Immagine dalla cartella Icone
-        'vcard': "BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=19709001746:+1 (970) 900-1746\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD"
+    message: {
+      locationMessage: {
+        name: "𝐌𝐞𝐧𝐮 𝐀𝐝𝐦𝐢𝐧",
+        jpegThumbnail: fs.readFileSync('./icone/admin.png'),
+        vcard: `BEGIN:VCARD
+VERSION:3.0
+N:;Unlimited;;;
+FN:Unlimited
+ORG:Unlimited
+TITLE:
+item1.TEL;waid=19709001746:+1 (970) 900-1746
+item1.X-ABLabel:Unlimited
+X-WA-BIZ-DESCRIPTION:ofc
+X-WA-BIZ-NAME:Unlimited
+END:VCARD`
       }
     },
-    'participant': "0@s.whatsapp.net"
+    participant: "0@s.whatsapp.net"
   };
 
-  let _0x259d4e = `
-╔══════════════════════════╗  
-║  🚀  𝐌 𝐄 𝐍 𝐔   𝐀 𝐃 𝐌 𝐈 𝐍  🚀  ║  
-╚══════════════════════════╝  
+  let menuText = `
+╔═══════════════✠═══════════════╗
+║         🚀 𝙈𝙀𝙉𝙐 𝘼𝘿𝙈𝙄𝙉 🚀         
+╚═══════════════✠═══════════════╝
 
            𝗖𝗢𝗠𝗔𝗡𝗗𝗜 𝗔𝗗𝗠𝗜𝗡  
 ╭━━━━━━━━━━━━━━━━━━━╮  
@@ -57,42 +61,28 @@ let handler = async (_0x4955de, { conn: _0x4b9a49, usedPrefix: _0xeb2cc9 }) => {
 ┃ ⚡ ${_0xeb2cc9}𝗟𝗜𝗡𝗞𝗤𝗥  
 ╰━━━━━━━━━━━━━━━━━━━╯  
 
-🔥 *꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰* 🔥
+🔥𝔏𝔢𝔵𝔦𝔬𝔫🔥
 `.trim();
 
-  let _0xf5c7c0 = global.db.data.nomedelbot || " ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ";
-
-  _0x4b9a49.sendMessage(_0x4955de.chat, {
-    'text': _0x259d4e,
-    'contextInfo': {
-      'mentionedJid': _0x4b9a49.parseMention(wm),
-      'forwardingScore': 0x1,
-      'isForwarded': true,
-      'forwardedNewsletterMessageInfo': {
-        'newsletterJid': "120363341274693350@newsletter",
-        'serverMessageId': '',
-        'newsletterName': ' ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ✦'
-      }
-    }
-  }, {
-    'quoted': _0x414c2d
-  });
+  await conn.sendMessage(
+    message.chat,
+    {
+      text: menuText,
+      footer: 'Scegli un menu:',
+      buttons: [
+        { buttonId: `${usedPrefix}menu`, buttonText: { displayText: "🏠 Menu Principale" }, type: 1 },
+        { buttonId: `${usedPrefix}menuowner`, buttonText: { displayText: "👑 Menu Owner" }, type: 1 },
+        { buttonId: `${usedPrefix}menusicurezza`, buttonText: { displayText: "🚨 Menu Sicurezza" }, type: 1 },
+        { buttonId: `${usedPrefix}menugruppo`, buttonText: { displayText: "👥 Menu Gruppo" }, type: 1 },
+      ],
+      headerType: 1
+    },
+    { quoted: quotedMsg }
+  );
 };
 
-handler.help = ["menu"];
-handler.tags = ["menu"];
-handler.command = /^(menuadm|admin)$/i;
-export default handler;
+handler.help = ["menuadmin", "menu", "menuowner", "menusicurezza", "menugruppo"];
+handler.tags = ["menuadmin"];
+handler.command = /^(menuadmin|menu|menuowner|menusicurezza|menugruppo|menuadm|admin)$/i;
 
-function clockString(_0x5dad08) {
-  let _0x233c78 = Math.floor(_0x5dad08 / 3600000);
-  let _0x2b10bc = Math.floor(_0x5dad08 / 60000) % 60;
-  let _0x2c7d73 = Math.floor(_0x5dad08 / 1000) % 60;
-  console.log({
-    'ms': _0x5dad08,
-    'h': _0x233c78,
-    'm': _0x2b10bc,
-    's': _0x2c7d73
-  });
-  return [_0x233c78, _0x2b10bc, _0x2c7d73].map(_0x4bd0ef => _0x4bd0ef.toString().padStart(2, 0)).join(':');
-}
+export default handler;
