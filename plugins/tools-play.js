@@ -76,8 +76,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       text: infoMessage,
       contextInfo: {
         externalAdReply: {
-          title: '  ꙰𝟥𝟥𝟥 ꙰ Downloader',
-          body: 'Scarica facilmente audio/video By Gabs ',
+          title: ' 𝔏𝔢𝔵𝔦𝔬𝔫 Downloader',
+          body: 'Scarica facilmente audio/video By 𖣂 ',
           mediaType: 1,
           previewType: 0,
           mediaUrl: url,
