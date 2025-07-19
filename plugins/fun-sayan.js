@@ -33,7 +33,7 @@ let handler = async (m, { conn, text }) => {
         
       
     ])}
-    ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰
+  𝔏𝔢𝔵𝔦𝔬𝔫 𝔹𝕆𝕋 ꙰
 ━━━━━━━━━━━━━━━━━━━━━
 
 🕒 *Tempo di esecuzione:* ${speed}
