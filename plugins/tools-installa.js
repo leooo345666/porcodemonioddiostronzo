@@ -30,11 +30,11 @@ let handler = async (m, { conn, usedPrefix }) => {
     },
     message: { 
       orderMessage: { 
-        text: '𝐆𝐀𝐁𝟑𝟑𝟑 🔮',
+        text: ' 🔮',
         itemCount: 2023,
         status: 1,
         surface: 1,
-        message: '𝐒𝐜𝐚𝐫𝐢𝐜𝐚 𝐆𝐀𝐁𝟑𝟑𝟑 🔮',
+        message: ' 🔮',
         vcard: `BEGIN:VCARD
 VERSION:3.0
 N:;Unlimited;;;
@@ -52,26 +52,8 @@ END:VCARD`
   };
 
   let info = `
-══════ •⊰✦⊱• ══════
-𝐂𝐨𝐦𝐚𝐧𝐝𝐢 𝐩𝐞𝐫 𝐢𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐫𝐞
-✧ cd
-✧ termux-setup-storage
-✧ apt update 
-✧ pkg upgrade 
-✧ pkg install git -y
-✧ pkg install nodejs -y
-✧ pkg install ffmpeg -y
-✧ pkg install imagemagick -y
-✧ pkg install yarn
-✧ git clone https://github.com/GabWT333/Gab333.git
-✧ cd Gab333 
-✧ yarn install 
-✧ npm install
-✧ npm update
-✧ npm start
-
-𝐒𝐜𝐚𝐫𝐢𝐜𝐚𝐫𝐞 𝐥𝐚 𝐜𝐚𝐫𝐭𝐞𝐥𝐥𝐚 𝐝𝐞𝐥 𝐛𝐨𝐭 📱
-✧ cd /sdcard && rm -rf Gab333 && git clone https://github.com/GabWT333/Gab333.git && cd Gab333 && npm start
+══════ •⊰✦⊱• ═════
+SUCAAAA IL BOT È PRIVATOO
 ══════ •⊰✦⊱• ══════
 `.trim();
 
@@ -82,10 +64,10 @@ END:VCARD`
         mediaType: 1, 
         description: null, 
         title: '𝐈𝐍𝐅𝐎 𝐃𝐄𝐋 𝐁𝐎𝐓',
-        body: '𝐆𝐀𝐁𝟑𝟑𝟑',         
+        body: 'lexi',         
         previewType: 0, 
         thumbnail: fs.readFileSync("./Menu2.jpg"),
-        sourceUrl: `https://github.com/GabWT333/Gab333`
+        sourceUrl: `whawha`
       }
     }
   });
