@@ -1,6 +1,6 @@
 {
-    "name": "333-Bot-MD",
-    "version": "2.0.0",
+    "name": "Lexion-Bot-MD",
+    "version": "1.0.0",
     "description": "Nada",
     "main": "index.js",
     "type": "module",
@@ -16,7 +16,7 @@
         "eslint": "eslint .",
         "eslintfix": "eslint --fix ."
     },
-    "homepage": "https://github.com/GabWT333/Gab333.git",
+    "homepage": "https://github.com/GabWT333/G333.git",
     "author": {
         "name": "333"
     },
